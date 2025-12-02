@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,15 @@
         /* CSS RESET & GENERAL STYLES */
         /* ======================== */
         :root {
-            --primary-color: #ff69b4; /* Pinky/Hot Pink */
-            --secondary-color: #f0f8ff; /* Alice Blue */
+            --primary-color: #ff69b4;
+            /* Pinky/Hot Pink */
+            --secondary-color: #f0f8ff;
+            /* Alice Blue */
             --text-color: #333;
             --success-bg: #d4edda;
             --success-text: #155724;
-            --transition-duration: 1.5s; /* Durasi Transisi Cover */
+            --transition-duration: 1.5s;
+            /* Durasi Transisi Cover */
         }
 
         body {
@@ -60,18 +64,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            pointer-events: auto; 
-            
+            pointer-events: auto;
+
             /* PENTING: Titik putar diatur ke KANAN */
-            transform-origin: right center; 
+            transform-origin: right center;
             transition: transform var(--transition-duration) cubic-bezier(0.5, 0, 0.5, 1);
-            transform: rotateY(0deg); /* Posisi awal, tertutup */
-            backface-visibility: hidden; 
+            transform: rotateY(0deg);
+            /* Posisi awal, tertutup */
+            backface-visibility: hidden;
         }
-        
+
         .cover.open {
             /* Rotasi ke 180 derajat POSITIF agar terbuka ke kanan */
-            transform: rotateY(180deg); 
+            transform: rotateY(180deg);
         }
 
         /* ======================== */
@@ -83,26 +88,33 @@
             margin-bottom: 20px;
         }
 
+        .cover p {
+            color: white;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: none;
+        }
+
         .cover .cover-icon {
             width: 100px;
             height: 100px;
             cursor: pointer;
             /* Pesawat DIAM saat cover tertutup */
         }
-        
+
         /* @keyframes fly Dihapus */
 
         /* ======================== */
         /* CSS KONTEN UTAMA & RESET BUTTON */
         /* ======================== */
-        
+
         .main-content {
             min-height: 100vh;
             padding-top: 20px;
             position: relative;
-            z-index: 1; 
+            z-index: 1;
         }
-        
+
         header {
             background-color: var(--primary-color);
             color: white;
@@ -140,12 +152,12 @@
             margin: 5px 0 0 0;
             font-weight: bold;
         }
-        
+
         .simbol {
-            font-size: 30px; 
+            font-size: 30px;
             display: flex;
             align-items: center;
-            margin: 0 10px; 
+            margin: 0 10px;
         }
 
         main {
@@ -162,7 +174,7 @@
         .reset-button {
             margin-bottom: 20px;
             padding: 10px 15px;
-            background-color: #f44336; 
+            background-color: #f44336;
             color: white;
             border: none;
             border-radius: 5px;
@@ -193,7 +205,7 @@
             margin-right: 10px;
             object-fit: cover;
         }
-        
+
         .stamp-image {
             position: absolute;
             width: 40px;
@@ -204,7 +216,7 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
             pointer-events: none;
-            transform: scale(3); 
+            transform: scale(3);
         }
 
         .place input[type="checkbox"] {
@@ -253,7 +265,7 @@
             width: 100%;
             z-index: 4;
         }
-        
+
         /* audio styles */
         .audio-icon-wrapper {
             width: 2rem;
@@ -266,7 +278,7 @@
             color: white;
             opacity: 0.5;
             mix-blend-mode: difference;
-            animation: none; 
+            animation: none;
             transform-origin: center;
             display: flex;
             justify-content: center;
@@ -274,7 +286,7 @@
             line-height: 0;
             z-index: 2;
         }
-        
+
         .audio-icon-wrapper.playing {
             animation: rotating 4s linear infinite;
         }
@@ -283,6 +295,7 @@
             from {
                 transform: rotate(0);
             }
+
             to {
                 transform: rotate(360deg);
             }
@@ -294,8 +307,9 @@
     <div class="container">
         <div class="page-wrapper">
             <div class="cover" id="coverScreen">
-                <h1>Book Stamp</h1>
+                <h1 id="book">Book Stamp</h1>
                 <img class="cover-icon" id="coverIcon" src="img/pesawat.png" alt="Ikon Pesawat Terbang">
+                <p id="tombol">klik tombol pesawat</p>
             </div>
         </div>
 
@@ -317,66 +331,68 @@
             <main>
                 <h2>Tempat Wisata yang Akan Dikunjungi 🗺️</h2>
                 <p>Centang kotak centang untuk menandai tempat yang sudah dikunjungi, stamp wisata!</p>
-                
+
                 <button id="resetChecklistButton" class="reset-button">
                     Hapus Semua Centang (Reset Perjalanan)
                 </button>
-                
+
                 <div class="place">
                     <img class="place-image" src="img/place1.jpg" alt="Foto Teras Samarinda">
                     <img class="stamp-image" src="img/stamp.png" alt="Stempel Terkunjungi">
                     <input type="checkbox" id="place1">
                     <label for="place1">Teras Samarinda</label>
-                    <a href="https://maps.app.goo.gl/YourMapLink1" class="map-link"
-                        target="_blank" rel="noopener noreferrer">Lihat Map</a>
+                    <a href="https://maps.app.goo.gl/YourMapLink1" class="map-link" target="_blank"
+                        rel="noopener noreferrer">Lihat Map</a>
                 </div>
-                
+
                 <div class="place">
                     <img class="place-image" src="img/place2.jpg" alt="Foto Azzahra Kosmetik">
                     <img class="stamp-image" src="img/stamp.png" alt="Stempel Terkunjungi">
                     <input type="checkbox" id="place2">
                     <label for="place2">Azzahra Kosmetik</label>
-                    <a href="https://maps.app.goo.gl/YourMapLink2" class="map-link"
-                        target="_blank" rel="noopener noreferrer">Lihat Map</a>
+                    <a href="https://maps.app.goo.gl/YourMapLink2" class="map-link" target="_blank"
+                        rel="noopener noreferrer">Lihat Map</a>
                 </div>
-                
+
                 <div class="place">
                     <img class="place-image" src="img/place3.jpg" alt="Foto Air Terjun">
                     <img class="stamp-image" src="img/stamp.png" alt="Stempel Terkunjungi">
                     <input type="checkbox" id="place3">
                     <label for="place3">Air Terjun</label>
-                    <a href="https://maps.app.goo.gl/YourMapLink3" class="map-link"
-                        target="_blank" rel="noopener noreferrer">Lihat Map</a>
+                    <a href="https://maps.app.goo.gl/YourMapLink3" class="map-link" target="_blank"
+                        rel="noopener noreferrer">Lihat Map</a>
                 </div>
-                
+
                 <div class="place">
                     <img class="place-image" src="img/place4.jpg" alt="Foto Saporo">
                     <img class="stamp-image" src="img/stamp.png" alt="Stempel Terkunjungi">
                     <input type="checkbox" id="place4">
                     <label for="place4">Saporo</label>
-                    <a href="https://maps.app.goo.gl/YourMapLink4" class="map-link"
-                        target="_blank" rel="noopener noreferrer">Lihat Map</a>
+                    <a href="https://maps.app.goo.gl/YourMapLink4" class="map-link" target="_blank"
+                        rel="noopener noreferrer">Lihat Map</a>
                 </div>
-                
+
                 <div class="place">
-                   <img class="place-image" src="img/place5.jpg" alt="Foto 21 Caffe">
-                   <img class="stamp-image" src="img/stamp.png" alt="Stempel Terkunjungi">
+                    <img class="place-image" src="img/place5.jpg" alt="Foto 21 Caffe">
+                    <img class="stamp-image" src="img/stamp.png" alt="Stempel Terkunjungi">
                     <input type="checkbox" id="place5">
                     <label for="place5">21 caffe</label>
-                    <a href="https://maps.app.goo.gl/YourMapLink5" class="map-link"
-                        target="_blank" rel="noopener noreferrer">Lihat Map</a>
+                    <a href="https://maps.app.goo.gl/YourMapLink5" class="map-link" target="_blank"
+                        rel="noopener noreferrer">Lihat Map</a>
                 </div>
             </main>
             <footer>
                 <p>Bima 💖 Iccha</p>
             </footer>
-            
+
             <div id="audio-container">
                 <audio id="song" preload="auto" loop>
-                    <source src="music/Sal Priadi - Kita usahakan rumah itu (Official Lyric Video).mp3" type="audio/mp3">
+                    <source src="music/Sal Priadi - Kita usahakan rumah itu (Official Lyric Video).mp3"
+                        type="audio/mp3">
                     Your browser does not support HTML5 audio.
                 </audio>
-                <div class="audio-icon-wrapper" id="audio-toggle" role="button" aria-label="Putar atau Jeda Musik Latar">
+                <div class="audio-icon-wrapper" id="audio-toggle" role="button"
+                    aria-label="Putar atau Jeda Musik Latar">
                     <i class="bi bi-disc"></i>
                 </div>
             </div>
@@ -388,28 +404,56 @@
             // Skrip untuk Animasi Cover "Membuka Buku" 3D
             const coverScreen = document.getElementById('coverScreen');
             const coverIcon = document.getElementById('coverIcon');
+            const bookTitle = document.getElementById('book');
+            const tombolText = document.getElementById('tombol');
             const pageWrapper = document.querySelector('.page-wrapper');
-            
-            // Jarak pesawat bergerak ke kiri saat cover terbuka ke kanan (negatif)
-            const ICON_TRANSLATE_DISTANCE = 150; 
+            // 🎵 Skrip untuk Audio
+            const audioToggle = document.getElementById('audio-toggle');
+            const song = document.getElementById('song');
 
-            if (coverIcon && coverScreen && pageWrapper) {
-                coverIcon.addEventListener('click', function() {
-                    if (coverScreen.classList.contains('open')) return;
-                    
+            // Jarak pesawat bergerak ke kiri saat cover terbuka ke kanan (negatif)
+            const ICON_TRANSLATE_DISTANCE = 550
+            const Text_OPEN_TRANSLATE_DISTANCE = 500;
+            const Text_CLOSE_TRANSLATE_DISTANCE = 0;
+
+            if (coverIcon) {
+                coverIcon.addEventListener('click', () => {
+
                     // 1. Mulai animasi membuka cover
                     coverScreen.classList.add('open');
-                    
+
                     // 2. Tambahkan translasi pada coverIcon agar bergerak bersama cover saat membuka
-                    coverIcon.style.transition = `transform ${coverScreen.style.transitionDuration || '1.5s'} ease-in-out`;
-                    coverIcon.style.transform = `translateX(-${ICON_TRANSLATE_DISTANCE}px)`;
-                    
+                    coverIcon.style.transition = `transform ${coverScreen.style.transitionDuration || '1.2s'} ease-in-out`;
+                    coverIcon.style.transform = `translateX(${ICON_TRANSLATE_DISTANCE}px)`;
+                    bookTitle.style.transition = `transform ${coverScreen.style.transitionDuration || '1.2s'} ease-in-out`;
+                    bookTitle.style.transform = `translateY(-${Text_OPEN_TRANSLATE_DISTANCE}px)`;
+                    tombolText.style.transition = `transform ${coverScreen.style.transitionDuration || '1.2s'} ease-in-out`;
+                    tombolText.style.transform = `translateX(-${Text_OPEN_TRANSLATE_DISTANCE}px)`;
+
 
                     // 3. Hilangkan wrapper setelah transisi selesai
                     coverScreen.addEventListener('transitionend', function handler() {
-                        pageWrapper.style.display = 'none'; 
+                        pageWrapper.style.display = 'none';
                         coverScreen.removeEventListener('transitionend', handler);
                     }, { once: true });
+
+                    if (song.played || song.currentTime > 0) {
+                        song.play();
+                        audioToggle.classList.add('playing');
+                    }
+
+                    if (audioToggle) {
+                        audioToggle.addEventListener('click', () => {
+                            if (song.paused) {
+                                song.play();
+                                audioToggle.classList.add('playing');
+                            } else {
+                                song.pause();
+                                audioToggle.classList.remove('playing');
+                            }
+
+                        });
+                    }
                 });
             }
 
@@ -419,7 +463,7 @@
 
             places.forEach(placeDiv => {
                 const checkbox = placeDiv.querySelector('input[type="checkbox"]');
-                
+
                 if (checkbox) {
                     const placeId = checkbox.id;
                     const isVisited = localStorage.getItem(placeId) === 'true';
@@ -434,41 +478,16 @@
                     checkbox.addEventListener('change', function () {
                         if (this.checked) {
                             placeDiv.classList.add('visited');
-                            localStorage.setItem(placeId, 'true'); 
+                            localStorage.setItem(placeId, 'true');
                         } else {
                             placeDiv.classList.remove('visited');
-                            localStorage.setItem(placeId, 'false'); 
+                            localStorage.setItem(placeId, 'false');
                         }
                     });
                 }
             });
-            
-            // 🎵 Skrip untuk Audio
-            const audio = document.getElementById('song');
-            const audioToggle = document.getElementById('audio-toggle');
-            const audioIcon = audioToggle.querySelector('i');
 
-            if (audio && audioToggle) {
-                audioToggle.addEventListener('click', function () {
-                    if (audio.paused) {
-                        audio.play()
-                            .then(() => {
-                                audioToggle.classList.add('playing'); 
-                                audioIcon.classList.remove('bi-disc');
-                                audioIcon.classList.add('bi-pause-circle-fill');
-                            })
-                            .catch((error) => {
-                                console.error("Audio playback failed:", error);
-                            });
-                    } else {
-                        audio.pause();
-                        audioToggle.classList.remove('playing');
-                        audioIcon.classList.remove('bi-pause-circle-fill');
-                        audioIcon.classList.add('bi-disc'); 
-                    }
-                    audioToggle.setAttribute('aria-checked', audio.paused ? 'false' : 'true');
-                });
-            }
+
 
             // LOGIKA RESET CHECKLIST
             const resetButton = document.getElementById('resetChecklistButton');
@@ -476,7 +495,7 @@
             if (resetButton) {
                 resetButton.addEventListener('click', () => {
                     const places = document.querySelectorAll('.place');
-                    
+
                     places.forEach(placeDiv => {
                         const checkbox = placeDiv.querySelector('input[type="checkbox"]');
                         const placeId = checkbox ? checkbox.id : null;
@@ -485,16 +504,17 @@
                             checkbox.checked = false;
                         }
                         placeDiv.classList.remove('visited');
-                        
+
                         if (placeId) {
                             localStorage.removeItem(placeId);
                         }
                     });
-                    return; 
+                    return;
                 });
             }
 
         });
     </script>
 </body>
+
 </html>
