@@ -199,8 +199,8 @@
             width: 40px;
             height: 40px;
             z-index: 3;
-            margin-left: 50px;
-            margin-top: 40px;
+            margin-left: 70px;
+            margin-top: 60px;
             opacity: 0;
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
             pointer-events: none;
@@ -234,11 +234,10 @@
 
         .place.visited .stamp-image {
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1.5);
         }
 
         .place.visited::after {
-            content: " ✓";
             font-size: 20px;
             color: green;
             font-weight: bold;
@@ -308,7 +307,7 @@
                         <img src="img/bima.jpg" alt="Foto Bima">
                         <p>Bima</p>
                     </div>
-                    <p class="simbol">🫶</p>
+                    <p class="simbol">💖</p>
                     <div class="photo-item">
                         <img src="img/ica.jpg" alt="Foto Ica">
                         <p>Ica</p>
@@ -369,7 +368,7 @@
                 </div>
             </main>
             <footer>
-                <p>Bima ❤️ Iccha</p>
+                <p>Bima 💖 Iccha</p>
             </footer>
             
             <div id="audio-container">
@@ -476,10 +475,6 @@
 
             if (resetButton) {
                 resetButton.addEventListener('click', () => {
-                    if (!confirm("Apakah Anda yakin ingin menghapus semua centang? Status akan direset!")) {
-                        return;
-                    }
-                    
                     const places = document.querySelectorAll('.place');
                     
                     places.forEach(placeDiv => {
@@ -495,8 +490,7 @@
                             localStorage.removeItem(placeId);
                         }
                     });
-                    
-                    alert("Semua centang telah dihilangkan dan status perjalanan direset!");
+                    return; 
                 });
             }
 
